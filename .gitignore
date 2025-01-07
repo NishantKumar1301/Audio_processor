@@ -1,0 +1,46 @@
+# Python
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+
+# Environment
+myenv/
+.env
+venv/
+myenv
+
+# Django
+db.sqlite3
+*.log
+
+# Byte-compiled / optimized / DLL files
+*.py[cod]
+*.so
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
+
+# IDEs
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Test Coverage
+.coverage
+*.cover
+htmlcov/
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# Static files
+staticfiles/
+media/
