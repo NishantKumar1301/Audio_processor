@@ -2,6 +2,7 @@ from app.accessors.audio_record import AudioRecordAccessor
 from app.models import OpenAIRequestLog
 
 
+
 class OpenAIRequestLogAccessor:
     @staticmethod
     def create_initial_entries_for_openai_request():

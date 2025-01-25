@@ -11,7 +11,7 @@ class OpenAIAnalysisService:
         :param transcription: Text to analyze
         :return: Dictionary with extracted details or an error message
         """
-        client = os.getenv("client")
+        client = OpenAI(api_key=os.getenv("API_KEY"))
         response = client.chat.completions.create(
             model="gpt-4o-2024-08-06",
             messages=[
@@ -61,6 +61,7 @@ class OpenAIAnalysisService:
         )
 
         try:
+            print(response)
             return response.choices[0].message.content  # Return the structured JSON response
         except KeyError as e:
             return {"error": f"Missing key in response: {str(e)}"}

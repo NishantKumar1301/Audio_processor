@@ -12,9 +12,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
-
-from pathlib import Path
-import os
 from dotenv import load_dotenv
 
 # Load environment variables
@@ -49,6 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app',
     'rest_framework',
+    'django_celery_beat',
+    'django_celery_results',
 ]
 
 MIDDLEWARE = [
@@ -168,3 +167,19 @@ CORS_ALLOW_ALL_ORIGINS = True
 CSRF_TRUSTED_ORIGINS = [
     'https://14fa-2406-7400-50-20e-a3a1-175b-bfb9-2700.ngrok-free.app'
 ]
+
+
+
+# Redis Configuration for Celery
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+
+# Celery Time Zone
+CELERY_TIMEZONE = 'Asia/Kolkata'
+
+# Results Backend for Storing Task Results
+CELERY_RESULT_BACKEND = 'django-db'
+
+# Retry broker connection on startup (fix deprecation warning)
+CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True

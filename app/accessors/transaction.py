@@ -1,6 +1,5 @@
 from app.models import Transaction
 
-
 class TransactionAccessor:
     @staticmethod
     def create_or_update_transaction(openai_request, product_name=None, selling_price=None, cost_price=None):
