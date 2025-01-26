@@ -38,9 +38,13 @@ db.sqlite3
 htmlcov/
 
 # Celery
-celerybeat-schedule
-celerybeat.pid
+# Celery Beat
+celerybeat-schedule*
+
 
 # Static files
 staticfiles/
 media/
+
+# Ignore the logs folder
+logs/
