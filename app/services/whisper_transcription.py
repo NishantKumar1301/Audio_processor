@@ -32,5 +32,5 @@ class WhisperTranscriptionService:
             except Exception as e:
                 if logger:
                     logger.error(f"Error processing record ID: {record.id} - {str(e)}")
-                # Silently handle errors for now
+                # Silently handle errors for now : Its importance is that the application would not be crashed if the error is found 
                 pass
