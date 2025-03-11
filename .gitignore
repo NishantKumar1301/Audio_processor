@@ -46,5 +46,4 @@ celerybeat-schedule*
 staticfiles/
 media/
 
-# Ignore the logs folder
-logs/
+
