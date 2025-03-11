@@ -12,7 +12,10 @@
     <header class="shadow-md p-4 flex justify-between items-center fixed w-full z-50 top-0 left-0 md:flex md:justify-between md:px-6 md:pl-6">
         <div class="flex items-center space-x-4">
             <button onclick="toggleSidebar()" class="text-blue-600 text-2xl md:hidden">&#9776;</button>
-            <a href="{% url 'dashboard' %}" class="text-2xl font-bold text-blue-700 whitespace-nowrap md:ml-0 hover:text-blue-900 transition duration-300">📊 VoiceLedger</a>
+            <!-- <a href="{% url 'home' %}" class="relative z-50 text-2xl font-bold text-blue-700 whitespace-nowrap md:ml-0 hover:text-blue-900 transition duration-300">📊 VoiceLedger</a> -->
+            <a href="{% url 'home' %}" class="relative z-50 text-2xl font-bold text-blue-700 whitespace-nowrap md:ml-0 hover:text-blue-900 transition duration-300 pointer-events-auto">📊 VoiceLedger</a>
+
+
         </div>
         
         <span class="text-gray-600 hidden md:block">Welcome, {% if user.is_authenticated %}{{ user.username }}{% else %}Guest{% endif %}</span>
