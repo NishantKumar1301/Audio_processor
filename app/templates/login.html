@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md mt-10">
+    <h2 class="text-2xl font-bold text-center">Login</h2>
+    {% if messages %}
+        <ul class="text-red-500">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <form method="POST" class="mt-4">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Username" class="w-full p-2 border rounded mt-2" required>
+        <input type="password" name="password" placeholder="Password" class="w-full p-2 border rounded mt-2" required>
+        <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded mt-4">Login</button>
+    </form>
+    <p class="mt-4 text-center">Don't have an account? <a href="{% url 'signup' %}" class="text-blue-600">Sign Up</a></p>
+</div>
+{% endblock %}
