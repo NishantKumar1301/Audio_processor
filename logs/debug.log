@@ -2609,3 +2609,36 @@ WARNING 2025-03-13 02:31:54,256 basehttp "GET /favicon.ico HTTP/1.1" 404 5553
 INFO 2025-03-13 02:31:57,395 basehttp "GET /login HTTP/1.1" 301 0
 INFO 2025-03-13 02:31:57,447 basehttp "GET /login/ HTTP/1.1" 200 3974
 INFO 2025-03-13 02:32:08,034 basehttp "POST /login/ HTTP/1.1" 200 4108
+INFO 2025-03-13 02:33:27,093 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-03-13 02:33:30,995 basehttp "GET /dashboard/ HTTP/1.1" 200 5353
+INFO 2025-03-13 02:33:31,477 basehttp "GET /media/dp.jpeg HTTP/1.1" 200 4772
+INFO 2025-03-13 02:33:40,884 basehttp "GET /upload HTTP/1.1" 301 0
+INFO 2025-03-13 02:33:44,406 basehttp "GET /upload/ HTTP/1.1" 200 5376
+WARNING 2025-03-13 02:33:44,652 basehttp "GET /static/images/voice_ledger_bg.jpg HTTP/1.1" 404 1892
+INFO 2025-03-13 02:33:54,415 audio_record Audio upload request received.
+INFO 2025-03-13 02:33:55,092 audio_record AudioRecord 78c7e418e9b84c4b86b6423f74779bb1 saved successfully.
+INFO 2025-03-13 02:33:55,308 audio_record Audio file duration: 4.282167 seconds
+INFO 2025-03-13 02:33:55,309 audio_record AudioRecord 78c7e418e9b84c4b86b6423f74779bb1 processed successfully.
+INFO 2025-03-13 02:33:55,327 basehttp "POST /upload_audio/ HTTP/1.1" 200 622
+INFO 2025-03-13 02:34:01,913 basehttp "GET /dashboard/ HTTP/1.1" 200 5353
+INFO 2025-03-13 02:34:09,386 basehttp "GET /profile/ HTTP/1.1" 200 8951
+INFO 2025-03-13 02:35:06,539 basehttp "POST /profile/ HTTP/1.1" 302 0
+INFO 2025-03-13 02:35:10,334 basehttp "GET /profile/ HTTP/1.1" 200 9080
+INFO 2025-03-13 02:35:10,400 basehttp "GET /media/profile_pics/FB_IMG_1707990784904.jpg HTTP/1.1" 200 32533
+INFO 2025-03-13 02:35:20,379 basehttp "GET /my-audios/ HTTP/1.1" 200 6710
+INFO 2025-03-13 02:35:20,410 basehttp "GET /media/profile_pics/FB_IMG_1707990784904.jpg HTTP/1.1" 304 0
+INFO 2025-03-13 02:35:40,334 whisper_transcription Successfully processed audio record ID: 78c7e418-e9b8-4c4b-86b6-423f74779bb1
+INFO 2025-03-13 02:35:40,335 open_ai Initializing OpenAI request logs for user: admin
+INFO 2025-03-13 02:35:41,404 open_ai OpenAI request logs initialized successfully.
+INFO 2025-03-13 02:35:41,406 open_ai Fetching pending OpenAI request logs...
+INFO 2025-03-13 02:35:42,056 open_ai Processing request log ID: acecb62a-730a-476b-bfaa-45f848b6174b
+INFO 2025-03-13 02:35:45,250 open_ai Extracted Data for request log ID acecb62a-730a-476b-bfaa-45f848b6174b: {'selling_price': 200, 'product_name': 'Apple cell', 'cost_price': 100}
+INFO 2025-03-13 02:35:47,660 open_ai Transaction created/updated for request log ID acecb62a-730a-476b-bfaa-45f848b6174b
+INFO 2025-03-13 02:35:47,663 basehttp "POST /process-audio/78c7e418-e9b8-4c4b-86b6-423f74779bb1/ HTTP/1.1" 302 0
+INFO 2025-03-13 02:35:52,140 basehttp "GET /my-audios/ HTTP/1.1" 200 6429
+INFO 2025-03-13 02:35:52,179 basehttp "GET /media/profile_pics/FB_IMG_1707990784904.jpg HTTP/1.1" 304 0
+INFO 2025-03-13 02:35:59,591 basehttp "GET /audio-details/78c7e418-e9b8-4c4b-86b6-423f74779bb1/ HTTP/1.1" 200 5892
+INFO 2025-03-13 02:35:59,642 basehttp "GET /media/profile_pics/FB_IMG_1707990784904.jpg HTTP/1.1" 304 0
+INFO 2025-03-13 02:36:02,343 basehttp "GET /dashboard HTTP/1.1" 301 0
+INFO 2025-03-13 02:36:06,864 basehttp "GET /dashboard/ HTTP/1.1" 200 5397
+INFO 2025-03-13 02:36:06,890 basehttp "GET /media/profile_pics/FB_IMG_1707990784904.jpg HTTP/1.1" 304 0
