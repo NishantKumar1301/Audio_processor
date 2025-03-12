@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Success</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+    <script>
+        // Show alert to user
+        alert('Audio uploaded successfully!');
+
+        // Redirect to the dashboard after the alert
+        setTimeout(function() {
+            window.location.href = "{{ redirect_url }}";  // Use the redirect URL passed from the view
+        }, 1000);  // 3 seconds delay
+    </script>
+
+</body>
+</html>

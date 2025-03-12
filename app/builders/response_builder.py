@@ -1,6 +1,6 @@
-from django.http import JsonResponse # type: ignore
-from rest_framework import status # type: ignore
-from rest_framework.response import Response # type: ignore
+from django.http import JsonResponse  # type: ignore
+from rest_framework import status  # type: ignore
+from rest_framework.response import Response  # type: ignore
 
 
 class ResponseBuilder(object):
@@ -14,17 +14,11 @@ class ResponseBuilder(object):
         self.status_message = ""
         self.status = status.HTTP_200_OK
         self.error_details = None
+        self.user_data = None
 
     def fail(self):
         self.status_code = -1
         return self
-
-    '''
-    This enables app to handle messages differently
-    than error code -1. In general cases use fail()
-    only. Use this when you specifically wants app
-    to handle this error message differently.
-    '''
 
     def fail_handle_differently(self):
         self.status_code = -2
@@ -75,6 +69,13 @@ class ResponseBuilder(object):
         self.error_details = errors
         return self
 
+    def include_user_data(self, user_data):
+        """
+        Optionally include user data in the response.
+        """
+        self.user_data = user_data
+        return self
+
     def get_404_not_found_response(self, message):
         self.not_found_404()
         self.message(message)
@@ -93,8 +94,9 @@ class ResponseBuilder(object):
         }
         if self.error_details:
             response['errors'] = self.error_details
+        if self.user_data:
+            response['user'] = self.user_data  # Include user data in the response
         return response
-
 
     def get_json_response(self):
         content = self.get_json()

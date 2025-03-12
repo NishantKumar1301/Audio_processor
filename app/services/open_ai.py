@@ -9,10 +9,11 @@ logger = logging.getLogger('app')
 
 class OpenAIService:
     @staticmethod
-    def initialize_openai_requests():
+    def initialize_openai_requests(user):
         try:
             logger.info("Initializing OpenAI request logs.")
-            OpenAIRequestLogAccessor.create_initial_entries_for_openai_request()
+            # Pass the user to the accessor to create initial entries
+            OpenAIRequestLogAccessor.create_initial_entries_for_openai_request(user)
             logger.info("OpenAI request logs initialized successfully.")
         except Exception as e:
             logger.error(f"Error initializing OpenAI request logs: {e}", exc_info=True)

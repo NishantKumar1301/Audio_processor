@@ -3,22 +3,30 @@ from rest_framework.parsers import MultiPartParser, FormParser  # type: ignore
 from app.builders.response_builder import ResponseBuilder
 from app.serializers.audio_record import AudioRecordSerializer
 from app.utils.audio_utils import get_audio_duration
-from app.utils.exctract_details import extract_details
-from app.utils.whisper_util import transcribe_audio
 import logging
+from rest_framework.permissions import IsAuthenticated  # Add this to ensure only authenticated users can upload
+from django.shortcuts import render,redirect
+from django.views import View
 
 # Get logger
 logger = logging.getLogger('app')
+
 class AudioUploadView(APIView):
     parser_classes = [MultiPartParser, FormParser]
+    permission_classes = [IsAuthenticated]  # Ensure only authenticated users can upload
 
     def post(self, request, *args, **kwargs):
         logger.info("Audio upload request received.")
         response = ResponseBuilder()
-        serializer = AudioRecordSerializer(data=request.data)
+
+        # Add the user to the request data before serializing
+        request.data['user'] = request.user.id  # Attach the logged-in user to the request data
+
+        # Pass the request to the serializer context
+        serializer = AudioRecordSerializer(data=request.data, context={'request': request})
 
         if serializer.is_valid():
-            audio_record = serializer.save()
+            audio_record = serializer.save()  # The user is automatically set due to the above line
             logger.info(f"AudioRecord {audio_record.id} saved successfully.")
 
             try:
@@ -43,8 +51,21 @@ class AudioUploadView(APIView):
                 'id': audio_record.id,
                 'audio_file': audio_record.audio_file.url
             })
-            return response.get_response()
+            
+            # Render the success page with the alert and redirect
+            return render(request, 'audio_upload_success.html', {
+                'redirect_url': '/dashboard/'
+            })
 
         logger.warning(f"Invalid data received: {serializer.errors}")
         response.fail().bad_request_400().message("Invalid data").errors(serializer.errors)
         return response.get_response()
+    
+class AudioUploadPageView(View):
+    def get(self, request, *args, **kwargs):
+        # Check if the user is authenticated
+        if not request.user.is_authenticated:
+            return redirect('login')  # Redirect to login if user is not authenticated
+        
+        # Render the audio upload page
+        return render(request, 'upload_audio.html')

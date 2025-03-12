@@ -26,8 +26,11 @@
         <div id="sidebar" class="w-64 shadow-md p-6 fixed inset-y-0 left-0 transform -translate-x-full md:translate-x-0 transition-transform duration-300 z-50">
             <nav class="mt-6 space-y-4">
                 <a href="/dashboard" class="block mt-20 py-2 px-4 text-gray-700 rounded transition duration-300 ease-in-out hover:bg-blue-200 hover:text-blue-900 focus:bg-blue-300 focus:text-blue-900 active:bg-blue-400 active:text-white">Dashboard</a>
+                {% if user.is_authenticated %}
                 <a href="/upload" class="block py-2 px-4 text-gray-700 rounded transition duration-300 ease-in-out hover:bg-blue-200 hover:text-blue-900 focus:bg-blue-300 focus:text-blue-900 active:bg-blue-400 active:text-white">Upload Audio</a>
-                <a href="/transactions" class="block py-2 px-4 text-gray-700 rounded transition duration-300 ease-in-out hover:bg-blue-200 hover:text-blue-900 focus:bg-blue-300 focus:text-blue-900 active:bg-blue-400 active:text-white">Transactions</a>
+                
+    <a href="/transactions" class="block py-2 px-4 text-white bg-blue-600 rounded-lg transition duration-300 hover:bg-blue-700">Transactions</a>
+{% endif %}
                 {% if user.is_authenticated %}
                     <a href="/logout" class="block py-2 px-4 text-red-600 rounded transition duration-300 ease-in-out hover:bg-red-200 hover:text-red-900 focus:bg-red-300 focus:text-red-900 active:bg-red-400 active:text-white">Logout</a>
                 {% else %}
@@ -46,9 +49,20 @@
                     <h1 class="text-4xl font-bold">Welcome to VoiceLedger</h1>
                     <p class="text-lg mt-2">AI-driven voice-based bookkeeping system for shopkeepers.</p>
                     <div class="mt-6 flex space-x-4">
-                        <a href="/upload" class="px-6 py-3 bg-blue-600 text-white rounded hover:bg-blue-700">Upload Audio</a>
-                        <a href="/transactions" class="px-6 py-3 bg-gray-200 text-gray-900 rounded hover:bg-gray-300">View Transactions</a>
-                    </div>
+                {% if user.is_authenticated %}
+                    <!-- If the user is authenticated, allow them to upload audio -->
+                    <a href="/upload" class="px-6 py-3 bg-blue-600 text-white rounded hover:bg-blue-700">Upload Audio</a>
+                {% else %}
+                    <!-- If the user is not authenticated, redirect to the login page -->
+                    <a href="/login" class="px-6 py-3 bg-blue-600 text-white rounded hover:bg-blue-700">Login to Upload Audio</a>
+                {% endif %}
+                {% if user.is_authenticated %}
+                    <a href="/transactions" class="px-6 py-3 bg-gray-200 text-gray-900 rounded hover:bg-gray-300">View Transactions</a>
+                {% else %}
+                    <!-- If the user is not authenticated, redirect to the login page -->
+                    <a href="/login" class="px-6 py-3 bg-gray-200 text-gray-900 rounded hover:bg-gray-300">Login to View Transactions</a>
+                {% endif %}
+            </div>
                 </div>
             </div>
             {% endblock %}

@@ -1,5 +1,6 @@
 from django.db import models # type: ignore
 from app.utils.utils import get_char_uuid
+from django.contrib.auth.models import User
 
 class BaseModel(models.Model):
     id = models.UUIDField(primary_key=True, max_length=100, db_index=True, editable=False, default=get_char_uuid)
@@ -10,14 +11,17 @@ class BaseModel(models.Model):
         abstract = True
 
 
+# models.py
 class AudioRecord(BaseModel):
     audio_file = models.FileField(upload_to='user_audio/')
     transcription = models.TextField(blank=True, null=True)
     processed = models.BooleanField(default=False)
     sent_to_openai = models.BooleanField(default=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="audio_records")  # non-nullable
 
     def __str__(self):
-        return f"AudioRecord {self.id}"
+        return f"AudioRecord {self.id} for {self.user.username}"
+
 
 
 class OpenAIRequestLog(BaseModel):

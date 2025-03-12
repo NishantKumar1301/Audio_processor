@@ -5,17 +5,18 @@ from app.models import OpenAIRequestLog
 
 class OpenAIRequestLogAccessor:
     @staticmethod
-    def create_initial_entries_for_openai_request():
-        audio_records = AudioRecordAccessor.get_audio_records_not_sent_to_openai()
+    def create_initial_entries_for_openai_request(user):
+        """
+        Create OpenAI request logs for audio records that have not been sent to OpenAI, associated with a user.
+        """
+        audio_records = AudioRecordAccessor.get_audio_records_not_sent_to_openai(user)
         for audio_record in audio_records:
-            # Create OpenAIRequestLog with status PENDING
             OpenAIRequestLog.objects.create(
                 audio_record=audio_record,
                 request_data="",
                 response_data="",
                 status="PENDING"
             )
-            # Mark the audio record as sent to OpenAI
             AudioRecordAccessor.update_sent_to_openai_status(audio_record)
 
     @staticmethod
