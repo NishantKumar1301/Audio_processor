@@ -42,8 +42,8 @@ htmlcov/
 celerybeat-schedule*
 
 
-# Static files
-staticfiles/
-media/
+# # Static files
+# staticfiles/
+# media/
 
 
