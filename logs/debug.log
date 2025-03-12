@@ -2600,3 +2600,12 @@ INFO 2025-03-13 01:44:07,533 audio_record Audio file duration: 4.282167 seconds
 INFO 2025-03-13 01:44:07,533 audio_record AudioRecord 9658c0e463414d43a1bed2276342753c processed successfully.
 INFO 2025-03-13 01:44:07,536 basehttp "POST /upload_audio/ HTTP/1.1" 200 622
 INFO 2025-03-13 01:44:10,430 basehttp "GET /dashboard/ HTTP/1.1" 200 5396
+INFO 2025-03-13 02:11:13,087 autoreload C:\Coding File\bhai\project\project\settings.py changed, reloading.
+INFO 2025-03-13 02:31:39,408 autoreload Watching for file changes with StatReloader
+INFO 2025-03-13 02:31:52,630 basehttp "GET / HTTP/1.1" 200 4238
+INFO 2025-03-13 02:31:54,235 basehttp "GET /media/background.webp HTTP/1.1" 200 410556
+WARNING 2025-03-13 02:31:54,253 log Not Found: /favicon.ico
+WARNING 2025-03-13 02:31:54,256 basehttp "GET /favicon.ico HTTP/1.1" 404 5553
+INFO 2025-03-13 02:31:57,395 basehttp "GET /login HTTP/1.1" 301 0
+INFO 2025-03-13 02:31:57,447 basehttp "GET /login/ HTTP/1.1" 200 3974
+INFO 2025-03-13 02:32:08,034 basehttp "POST /login/ HTTP/1.1" 200 4108
