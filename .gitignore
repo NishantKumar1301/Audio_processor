@@ -12,7 +12,7 @@ myenv
 
 # Django
 db.sqlite3
-*.log
+
 
 # Byte-compiled / optimized / DLL files
 *.py[cod]
