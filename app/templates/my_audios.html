@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-4xl font-extrabold text-white bg-gradient-to-r from-blue-600 to-purple-700 shadow-lg py-4 px-6 rounded-lg text-center tracking-wide uppercase">
+        🎵 My Uploaded Audios
+    </h1>
+
+    <div class="bg-white shadow-md rounded-lg p-6 mt-6">
+        {% if user_audios %}
+            <table class="w-full border-collapse border border-gray-200">
+                <thead>
+                    <tr class="bg-blue-600 text-white">
+                        <th class="py-3 px-4">Audio File</th>
+                        <th class="py-3 px-4">Status</th>
+                        <th class="py-3 px-4">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for audio in user_audios %}
+                    <tr class="border-b">
+                        <td class="py-3 px-4">
+                            <a href="{{ audio.audio_file.url }}" class="text-blue-600 hover:underline">{{ audio.audio_file.name }}</a>
+                        </td>
+                        <td class="py-3 px-4">
+                            {% if audio.processed %}
+                                ✅ Processed
+                            {% else %}
+                                ⏳ Not Processed
+                            {% endif %}
+                        </td>
+                        <td class="py-3 px-4">
+                            {% if audio.processed %}
+                                <a href="{% url 'view_audio_details' audio.id %}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">🔍 View Details</a>
+                            {% else %}
+                                <form method="POST" action="{% url 'process_audio' audio.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">⚡ Process Now</button>
+                                </form>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <!-- Pagination Section -->
+            <div class="flex justify-center mt-6">
+                {% if user_audios.has_previous %}
+                    <a href="?page=1" class="px-4 py-2 mx-1 border border-gray-300 rounded hover:bg-blue-200">« First</a>
+                    <a href="?page={{ user_audios.previous_page_number }}" class="px-4 py-2 mx-1 border border-gray-300 rounded hover:bg-blue-200">‹ Prev</a>
+                {% endif %}
+
+                <span class="px-4 py-2 mx-1 bg-blue-600 text-white rounded">{{ user_audios.number }} / {{ user_audios.paginator.num_pages }}</span>
+
+                {% if user_audios.has_next %}
+                    <a href="?page={{ user_audios.next_page_number }}" class="px-4 py-2 mx-1 border border-gray-300 rounded hover:bg-blue-200">Next ›</a>
+                    <a href="?page={{ user_audios.paginator.num_pages }}" class="px-4 py-2 mx-1 border border-gray-300 rounded hover:bg-blue-200">Last »</a>
+                {% endif %}
+            </div>
+
+        {% else %}
+            <p class="text-gray-500 text-center mt-4">No audios uploaded yet.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

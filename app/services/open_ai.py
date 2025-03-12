@@ -10,9 +10,9 @@ logger = logging.getLogger('app')
 class OpenAIService:
     @staticmethod
     def initialize_openai_requests(user):
+        """Creates initial OpenAI request logs for unprocessed audio records."""
         try:
-            logger.info("Initializing OpenAI request logs.")
-            # Pass the user to the accessor to create initial entries
+            logger.info("Initializing OpenAI request logs for user: %s", user.username)
             OpenAIRequestLogAccessor.create_initial_entries_for_openai_request(user)
             logger.info("OpenAI request logs initialized successfully.")
         except Exception as e:
@@ -26,7 +26,7 @@ class OpenAIService:
         - Update request log with response and status.
         - Create or update corresponding Transaction entries.
         """
-        logger.info("Fetching pending OpenAI request logs.")
+        logger.info("Fetching pending OpenAI request logs...")
         pending_requests = OpenAIRequestLogAccessor.get_pending_requests()
 
         # Exit early if no pending requests
@@ -38,50 +38,60 @@ class OpenAIService:
             try:
                 logger.info(f"Processing request log ID: {request_log.id}")
 
-                # Prepare request data
+                # Get transcription from audio record
                 transcription = request_log.audio_record.transcription
-                request_data = transcription
+                if not transcription:
+                    logger.warning(f"No transcription found for request log ID: {request_log.id}")
+                    continue
+
                 logger.debug(f"Request transcription: {transcription}")
 
                 # Call OpenAI to extract details
                 response_data = OpenAIAnalysisService.extract_details_from_text(transcription)
                 logger.debug(f"Response data from OpenAI: {response_data}")
 
-                # Determine status based on response
-                status = "SUCCESS" if "error" not in response_data else "FAILED"
-                logger.info(f"Request log ID {request_log.id} processed with status: {status}")
+                # Ensure response_data is properly formatted JSON
+                try:
+                    if isinstance(response_data, str):
+                        response_data_dict = json.loads(response_data)
+                    elif isinstance(response_data, dict):
+                        response_data_dict = response_data
+                    else:
+                        raise ValueError("Unexpected response format from OpenAI")
+                except json.JSONDecodeError as e:
+                    logger.error(f"JSON decoding error for request log ID {request_log.id}: {e}")
+                    response_data_dict = {"error": "Invalid OpenAI response format"}
 
-                # Update the OpenAIRequestLog entry
+                logger.info(f"Extracted Data for request log ID {request_log.id}: {response_data_dict}")
+
+                # Determine request status
+                status = "SUCCESS" if "error" not in response_data_dict else "FAILED"
+
+                # Update OpenAIRequestLog entry
                 OpenAIRequestLogAccessor.update_request_log_status(
                     request_log=request_log,
-                    request_data=request_data,
-                    response_data=json.dumps(response_data),  # Save response_data as JSON string
+                    request_data=transcription,
+                    response_data=json.dumps(response_data_dict),  # Store as JSON string
                     status=status
                 )
 
-                # If successful, create or update Transaction
+                # If successful, create/update Transaction
                 if status == "SUCCESS":
-                    # Deserialize response_data before accessing
-                    response_data_dict = (
-                        json.loads(json.dumps(response_data)) if isinstance(response_data, dict) else json.loads(response_data)
-                    )
-
                     TransactionAccessor.create_or_update_transaction(
                         openai_request=request_log,
-                        product_name=response_data_dict.get("product_name"),
-                        selling_price=response_data_dict.get("selling_price"),
-                        cost_price=response_data_dict.get("cost_price"),
+                        product_name=response_data_dict.get("product_name", "Unknown"),
+                        selling_price=response_data_dict.get("selling_price", 0.00),
+                        cost_price=response_data_dict.get("cost_price", 0.00),
                     )
                     logger.info(f"Transaction created/updated for request log ID {request_log.id}")
                 else:
-                    logger.warning(f"Request log ID {request_log.id} failed with response: {response_data}")
+                    logger.warning(f"Request log ID {request_log.id} failed. Response: {response_data_dict}")
 
             except Exception as e:
-                # Handle unexpected errors and mark as FAILED
                 logger.error(f"Error processing request log ID {request_log.id}: {e}", exc_info=True)
                 OpenAIRequestLogAccessor.update_request_log_status(
                     request_log=request_log,
-                    request_data="",
+                    request_data=transcription,
                     response_data=str(e),
                     status="FAILED"
                 )

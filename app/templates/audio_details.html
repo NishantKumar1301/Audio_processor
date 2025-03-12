@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-4xl font-extrabold text-white bg-gradient-to-r from-green-600 to-blue-700 shadow-lg py-4 px-6 rounded-lg text-center tracking-wide uppercase">
+        🎧 Audio Details
+    </h1>
+
+    <div class="bg-white shadow-md rounded-lg p-6 mt-6">
+        <p class="text-lg"><strong>File:</strong> 
+            <a href="{{ audio_record.audio_file.url }}" class="text-blue-600 hover:underline">{{ audio_record.audio_file.name }}</a>
+        </p>
+        <p class="text-lg"><strong>Status:</strong> 
+            {% if audio_record.processed %}
+                ✅ Processed
+            {% else %}
+                ⏳ Not Processed
+            {% endif %}
+        </p>
+
+        {% if audio_record.transcription %}
+            <p class="mt-4"><strong>📜 Transcription:</strong></p>
+            <div class="bg-gray-100 p-4 rounded">{{ audio_record.transcription }}</div>
+        {% endif %}
+
+        <!-- {% if openai_log %}
+            <p class="mt-4"><strong>🛒 Extracted Data:</strong></p>
+            <ul class="bg-gray-100 p-4 rounded">
+                <li><strong>Product Name:</strong> {{ openai_log.product_name|default:"N/A" }}</li>
+                <li><strong>Cost Price:</strong> ₹{{ openai_log.cost_price|default:"0.00" }}</li>
+                <li><strong>Selling Price:</strong> ₹{{ openai_log.selling_price|default:"0.00" }}</li>
+            </ul>
+        {% else %}
+            <p class="mt-4 text-red-600">No extracted data available.</p>
+        {% endif %} -->
+
+        <a href="{% url 'my_audios' %}" class="mt-6 inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">⬅️ Back to My Audios</a>
+    </div>
+</div>
+{% endblock %}
