@@ -4,6 +4,7 @@ from app.views.audio_record import AudioUploadView, AudioUploadPageView
 from app.views.dashboard import dashboard_view
 from app.views.auth import signup_view, login_view, logout_view
 from app.views.my_audio_record import MyAudiosView, ViewAudioDetailsView
+from app.views.profile import update_profile
 from app.views.transaction import user_transactions
 
 urlpatterns = [
@@ -15,6 +16,7 @@ urlpatterns = [
     path('process-audio/<uuid:audio_id>/', MyAudiosView.as_view(), name='process_audio'),
     path('audio-details/<uuid:audio_id>/', ViewAudioDetailsView.as_view(), name='view_audio_details'),
     path("dashboard/", dashboard_view, name="dashboard"),
+    path('profile/', update_profile, name="profile"),
     path("signup/", signup_view, name="signup"),
     path("login/", login_view, name="login"),
     path("logout/", logout_view, name="logout"),

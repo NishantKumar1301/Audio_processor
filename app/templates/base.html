@@ -9,17 +9,27 @@
 <body class="bg-gray-50 text-gray-900">
 
     <!-- Navbar -->
-    <header class="shadow-md p-4 flex justify-between items-center fixed w-full z-50 top-0 left-0 md:flex md:justify-between md:px-6 md:pl-6">
-        <div class="flex items-center space-x-4">
-            <button onclick="toggleSidebar()" class="text-blue-600 text-2xl md:hidden">&#9776;</button>
-            <!-- <a href="{% url 'home' %}" class="relative z-50 text-2xl font-bold text-blue-700 whitespace-nowrap md:ml-0 hover:text-blue-900 transition duration-300">📊 VoiceLedger</a> -->
-            <a href="{% url 'home' %}" class="relative z-50 text-2xl font-bold text-blue-700 whitespace-nowrap md:ml-0 hover:text-blue-900 transition duration-300 pointer-events-auto">📊 VoiceLedger</a>
+   <header class="shadow-md p-4 flex justify-between items-center fixed w-full z-50 top-0 left-0 md:flex md:justify-between md:px-6 md:pl-6">
+    <div class="flex items-center space-x-4">
+        <button onclick="toggleSidebar()" class="text-blue-600 text-2xl md:hidden">&#9776;</button>
+        <a href="{% url 'home' %}" class="relative z-50 text-2xl font-bold text-blue-700 whitespace-nowrap md:ml-0 hover:text-blue-900 transition duration-300 pointer-events-auto">📊 VoiceLedger</a>
+    </div>
 
+    <div class="flex items-center space-x-4">
+        {% if user.is_authenticated %}
+            <span class="text-gray-600">Welcome, {{ user.username }}</span>
+            <a href="{% url 'profile' %}" class="relative w-10 h-10">
+                <img src="{{ user.profile.get_profile_pic_url }}" 
+                    onerror="this.onerror=null; this.src='/media/dp.jpeg';" 
+                    alt="Profile Pic" 
+                    class="w-10 h-10 rounded-full border border-gray-300 shadow-md">
+            </a>
+        {% else %}
+            <a href="{% url 'login' %}" class="text-blue-600 hover:text-blue-800">Login</a>
+        {% endif %}
+    </div>
+</header>
 
-        </div>
-        
-        <span class="text-gray-600 hidden md:block">Welcome, {% if user.is_authenticated %}{{ user.username }}{% else %}Guest{% endif %}</span>
-    </header>
 
     <div class="flex h-screen pt-20"> <!-- Adjusted padding for navbar height -->
         <!-- Sidebar -->
@@ -41,6 +51,11 @@
         <a href="{% url 'transactions' %}" class="block py-2 px-4 text-gray-700 rounded transition duration-300 ease-in-out hover:bg-blue-200 hover:text-blue-900 focus:bg-blue-300 focus:text-blue-900 active:bg-blue-400 active:text-white flex items-center">
             💰 <span class="ml-2">Transactions</span>
         </a>
+
+        <a href="{% url 'profile' %}" class="block py-2 px-4 text-gray-700 rounded transition duration-300 ease-in-out hover:bg-blue-200 hover:text-blue-900 focus:bg-blue-300 focus:text-blue-900 active:bg-blue-400 active:text-white flex items-center">
+        👤  
+        <span class="ml-2">Profile</span>
+    </a>
         {% endif %}
 
         {% if user.is_authenticated %}
