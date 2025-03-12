@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-4xl font-extrabold text-white bg-gradient-to-r from-blue-600 to-purple-700 shadow-lg py-4 px-6 rounded-lg text-center tracking-wide uppercase">
+    📜 Your Transactions
+</h1>
+
+
+    <!-- Search and Filter -->
+    <!-- Search and Filter -->
+<div class="flex flex-col md:flex-row md:items-center md:justify-between bg-gradient-to-r from-gray-50 to-gray-200 p-6 rounded-lg shadow-lg mb-6">
+    <!-- Search Bar -->
+    <div class="relative w-full md:w-1/3">
+        <input type="text" id="search" placeholder="🔍 Search transactions..." 
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring focus:ring-blue-400 focus:outline-none transition duration-300">
+        <div class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-gray-400">
+            🔍
+        </div>
+    </div>
+
+    <!-- Filter Dropdown -->
+    <div class="relative w-full md:w-1/4 mt-4 md:mt-0">
+        <select id="filter" class="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring focus:ring-blue-400 focus:outline-none transition duration-300 bg-white">
+            <option value="" class="text-gray-500">🔽 Filter by Product</option>
+            {% for transaction in transactions %}
+                <option value="{{ transaction.product_name }}">{{ transaction.product_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+</div>
+
+
+    <!-- Transactions Table -->
+    <div class="overflow-x-auto bg-white shadow-md rounded-lg">
+        <table class="w-full border-collapse text-sm md:text-base">
+            <thead>
+                <tr class="bg-blue-600 text-white text-left">
+                    <th class="py-3 px-4">Product</th>
+                    <th class="py-3 px-4">Selling Price</th>
+                    <th class="py-3 px-4">Cost Price</th>
+                    <th class="py-3 px-4">Profit</th>
+                    <th class="py-3 px-4">Date</th>
+                </tr>
+            </thead>
+            <tbody id="transactionTable">
+                {% for transaction in transactions %}
+                <tr class="border-b hover:bg-gray-100 transition duration-200">
+                    <td class="py-3 px-4 product-name">{{ transaction.product_name }}</td>
+                    <td class="py-3 px-4 text-green-600 font-bold">₹{{ transaction.selling_price }}</td>
+                    <td class="py-3 px-4 text-red-600">₹{{ transaction.cost_price }}</td>
+                    <td class="py-3 px-4 text-blue-600 font-semibold">₹{{ transaction.profit }}</td>
+                    <td class="py-3 px-4 text-gray-500">{{ transaction.created_at|date:"M d, Y" }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center py-6 text-gray-600">No transactions found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Pagination (Styled) -->
+<div class="flex justify-center mt-6">
+    <nav class="flex items-center space-x-2">
+        {% if transactions.has_previous %}
+            <a href="?page=1" class="px-4 py-2 bg-gray-200 rounded-lg shadow-md hover:bg-gray-300 transition">« First</a>
+            <a href="?page={{ transactions.previous_page_number }}" class="px-3 py-2 bg-gray-200 rounded-lg shadow-md hover:bg-gray-300 transition">‹ Prev</a>
+        {% endif %}
+
+        <!-- Page Numbers -->
+        {% for num in transactions.paginator.page_range %}
+            {% if transactions.number == num %}
+                <span class="px-4 py-2 bg-blue-600 text-white font-bold rounded-lg shadow-md">{{ num }}</span>
+            {% elif num > transactions.number|add:-3 and num < transactions.number|add:3 %}
+                <a href="?page={{ num }}" class="px-4 py-2 bg-gray-200 rounded-lg shadow-md hover:bg-gray-300 transition">{{ num }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if transactions.has_next %}
+            <a href="?page={{ transactions.next_page_number }}" class="px-3 py-2 bg-gray-200 rounded-lg shadow-md hover:bg-gray-300 transition">Next ›</a>
+            <a href="?page={{ transactions.paginator.num_pages }}" class="px-4 py-2 bg-gray-200 rounded-lg shadow-md hover:bg-gray-300 transition">Last »</a>
+        {% endif %}
+    </nav>
+</div>
+
+</div>
+
+<!-- JavaScript for Search & Filtering -->
+<script>
+    document.getElementById("search").addEventListener("input", function() {
+        let filter = this.value.toLowerCase();
+        let rows = document.querySelectorAll("#transactionTable tr");
+
+        rows.forEach(row => {
+            let product = row.querySelector(".product-name")?.textContent.toLowerCase();
+            if (product) {
+                row.style.display = product.includes(filter) ? "" : "none";
+            }
+        });
+    });
+
+    document.getElementById("filter").addEventListener("change", function() {
+        let filter = this.value;
+        let rows = document.querySelectorAll("#transactionTable tr");
+
+        rows.forEach(row => {
+            let product = row.querySelector(".product-name")?.textContent;
+            row.style.display = product === filter || filter === "" ? "" : "none";
+        });
+    });
+</script>
+{% endblock %}
