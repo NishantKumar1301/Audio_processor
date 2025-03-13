@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
-# Exit immediately if any command exits with a non-zero status
 set -o errexit  
 
-# Install dependencies
 pip install -r requirements.txt
 
-# Run database migrations
+python manage.py migrate --fake django_celery_beat zero
+python manage.py makemigrations django_celery_beat
 python manage.py migrate
