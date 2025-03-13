@@ -155,6 +155,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 CSRF_TRUSTED_ORIGINS = [
     "https://your-render-app.onrender.com",
     "https://your-custom-domain.com",
+    "https://*.ngrok-free.app",
 ]
 
 # Logging Configuration (for debugging errors in production)

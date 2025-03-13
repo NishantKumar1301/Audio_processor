@@ -29,3 +29,5 @@
 
 # # Set the timezone for the task schedule
 # app.conf.timezone = 'Asia/Kolkata'
+
+
