@@ -9,7 +9,7 @@ myenv/
 .env
 venv/
 myenv
-
+logs/
 # Django
 db.sqlite3
 
