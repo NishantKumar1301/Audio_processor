@@ -2686,3 +2686,58 @@ WARNING 2025-03-13 13:29:24,699 log Not Found: /media/profile_pics/IMG-20220318-
 WARNING 2025-03-13 13:29:24,701 basehttp "GET /media/profile_pics/IMG-20220318-WA0013.jpg HTTP/1.1" 404 5878
 INFO 2025-03-13 13:35:22,057 autoreload C:\Coding File\bhai\project\app\utils\whisper_util.py changed, reloading.
 INFO 2025-03-13 13:35:24,279 autoreload Watching for file changes with StatReloader
+INFO 2025-03-13 13:40:10,186 autoreload Watching for file changes with StatReloader
+INFO 2025-03-13 13:46:15,898 autoreload Watching for file changes with StatReloader
+INFO 2025-03-13 13:46:36,495 basehttp "GET /my-audios/ HTTP/1.1" 200 7616
+WARNING 2025-03-13 13:46:36,520 log Not Found: /media/profile_pics/IMG-20220318-WA0013.jpg
+WARNING 2025-03-13 13:46:36,524 basehttp "GET /media/profile_pics/IMG-20220318-WA0013.jpg HTTP/1.1" 404 5878
+INFO 2025-03-13 13:46:43,407 whisper_transcription Successfully processed audio record ID: 7e46baa9-26f8-44b1-be35-5248875f4328
+INFO 2025-03-13 13:46:43,408 open_ai Initializing OpenAI request logs for user: admin
+INFO 2025-03-13 13:46:44,322 open_ai OpenAI request logs initialized successfully.
+INFO 2025-03-13 13:46:44,323 open_ai Fetching pending OpenAI request logs...
+INFO 2025-03-13 13:46:44,874 open_ai Processing request log ID: 84c2e3d1-9f06-4351-8358-7e10039870fe
+INFO 2025-03-13 13:46:47,471 open_ai Extracted Data for request log ID 84c2e3d1-9f06-4351-8358-7e10039870fe: {'selling_price': None, 'product_name': None, 'cost_price': None}
+INFO 2025-03-13 13:46:49,512 open_ai Transaction created/updated for request log ID 84c2e3d1-9f06-4351-8358-7e10039870fe
+INFO 2025-03-13 13:46:49,514 basehttp "POST /process-audio/7e46baa9-26f8-44b1-be35-5248875f4328/ HTTP/1.1" 302 0
+INFO 2025-03-13 13:46:53,670 basehttp "GET /my-audios/ HTTP/1.1" 200 7335
+WARNING 2025-03-13 13:46:53,694 log Not Found: /media/profile_pics/IMG-20220318-WA0013.jpg
+WARNING 2025-03-13 13:46:53,696 basehttp "GET /media/profile_pics/IMG-20220318-WA0013.jpg HTTP/1.1" 404 5878
+INFO 2025-03-13 13:47:14,325 basehttp "GET /audio-details/7e46baa9-26f8-44b1-be35-5248875f4328/ HTTP/1.1" 200 5863
+WARNING 2025-03-13 13:47:14,360 log Not Found: /media/profile_pics/IMG-20220318-WA0013.jpg
+WARNING 2025-03-13 13:47:14,363 basehttp "GET /media/profile_pics/IMG-20220318-WA0013.jpg HTTP/1.1" 404 5878
+INFO 2025-03-13 13:47:39,503 autoreload C:\Coding File\bhai\project\app\utils\whisper_util.py changed, reloading.
+INFO 2025-03-13 13:47:41,364 autoreload Watching for file changes with StatReloader
+INFO 2025-03-13 13:47:56,964 basehttp "GET /audio-details/7e46baa9-26f8-44b1-be35-5248875f4328/ HTTP/1.1" 200 5863
+WARNING 2025-03-13 13:47:56,989 log Not Found: /media/profile_pics/IMG-20220318-WA0013.jpg
+WARNING 2025-03-13 13:47:56,991 basehttp "GET /media/profile_pics/IMG-20220318-WA0013.jpg HTTP/1.1" 404 5878
+INFO 2025-03-13 13:48:02,558 basehttp "GET /upload/ HTTP/1.1" 200 5419
+WARNING 2025-03-13 13:48:02,589 log Not Found: /media/profile_pics/IMG-20220318-WA0013.jpg
+WARNING 2025-03-13 13:48:02,591 basehttp "GET /media/profile_pics/IMG-20220318-WA0013.jpg HTTP/1.1" 404 5878
+WARNING 2025-03-13 13:48:02,650 basehttp "GET /static/images/voice_ledger_bg.jpg HTTP/1.1" 404 1892
+INFO 2025-03-13 13:48:12,242 audio_record Audio upload request received.
+INFO 2025-03-13 13:48:12,856 audio_record AudioRecord 39d2003982ad4e499cfdc286913c1101 saved successfully.
+INFO 2025-03-13 13:48:12,970 audio_record Audio file duration: 4.282167 seconds
+INFO 2025-03-13 13:48:12,970 audio_record AudioRecord 39d2003982ad4e499cfdc286913c1101 processed successfully.
+INFO 2025-03-13 13:48:12,973 basehttp "POST /upload_audio/ HTTP/1.1" 200 622
+INFO 2025-03-13 13:48:18,735 basehttp "GET /dashboard/ HTTP/1.1" 200 5396
+WARNING 2025-03-13 13:48:18,773 log Not Found: /media/profile_pics/IMG-20220318-WA0013.jpg
+WARNING 2025-03-13 13:48:18,775 basehttp "GET /media/profile_pics/IMG-20220318-WA0013.jpg HTTP/1.1" 404 5878
+INFO 2025-03-13 13:48:33,490 basehttp "GET /my-audios/ HTTP/1.1" 200 8523
+WARNING 2025-03-13 13:48:33,511 log Not Found: /media/profile_pics/IMG-20220318-WA0013.jpg
+WARNING 2025-03-13 13:48:33,513 basehttp "GET /media/profile_pics/IMG-20220318-WA0013.jpg HTTP/1.1" 404 5878
+INFO 2025-03-13 13:48:50,812 whisper_transcription Successfully processed audio record ID: 39d20039-82ad-4e49-9cfd-c286913c1101
+INFO 2025-03-13 13:48:50,813 open_ai Initializing OpenAI request logs for user: admin
+INFO 2025-03-13 13:48:51,746 open_ai OpenAI request logs initialized successfully.
+INFO 2025-03-13 13:48:51,747 open_ai Fetching pending OpenAI request logs...
+INFO 2025-03-13 13:48:52,390 open_ai Processing request log ID: 11c7493c-eda6-4a9d-9f8f-02d999395b16
+INFO 2025-03-13 13:48:54,289 open_ai Extracted Data for request log ID 11c7493c-eda6-4a9d-9f8f-02d999395b16: {'selling_price': 200, 'product_name': 'Apple cell', 'cost_price': 100}
+INFO 2025-03-13 13:48:56,570 open_ai Transaction created/updated for request log ID 11c7493c-eda6-4a9d-9f8f-02d999395b16
+INFO 2025-03-13 13:48:56,573 basehttp "POST /process-audio/39d20039-82ad-4e49-9cfd-c286913c1101/ HTTP/1.1" 302 0
+INFO 2025-03-13 13:49:00,366 basehttp "GET /my-audios/ HTTP/1.1" 200 8242
+WARNING 2025-03-13 13:49:00,387 log Not Found: /media/profile_pics/IMG-20220318-WA0013.jpg
+WARNING 2025-03-13 13:49:00,389 basehttp "GET /media/profile_pics/IMG-20220318-WA0013.jpg HTTP/1.1" 404 5878
+INFO 2025-03-13 13:49:11,684 basehttp "GET /audio-details/39d20039-82ad-4e49-9cfd-c286913c1101/ HTTP/1.1" 200 5891
+WARNING 2025-03-13 13:49:11,728 log Not Found: /media/profile_pics/IMG-20220318-WA0013.jpg
+WARNING 2025-03-13 13:49:11,730 basehttp "GET /media/profile_pics/IMG-20220318-WA0013.jpg HTTP/1.1" 404 5878
+INFO 2025-03-13 13:50:00,557 autoreload C:\Coding File\bhai\project\project\settings.py changed, reloading.
+INFO 2025-03-13 13:50:02,563 autoreload Watching for file changes with StatReloader
