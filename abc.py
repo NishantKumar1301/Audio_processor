@@ -27,3 +27,4 @@ if __name__ == "__main__":
     print("🔄 Starting cleanup process...")
     reset_django_celery_beat()
     print("🎉 Cleanup completed successfully!")
+ # type: ignore

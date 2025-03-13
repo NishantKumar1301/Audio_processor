@@ -2642,3 +2642,47 @@ INFO 2025-03-13 02:35:59,642 basehttp "GET /media/profile_pics/FB_IMG_1707990784
 INFO 2025-03-13 02:36:02,343 basehttp "GET /dashboard HTTP/1.1" 301 0
 INFO 2025-03-13 02:36:06,864 basehttp "GET /dashboard/ HTTP/1.1" 200 5397
 INFO 2025-03-13 02:36:06,890 basehttp "GET /media/profile_pics/FB_IMG_1707990784904.jpg HTTP/1.1" 304 0
+INFO 2025-03-13 13:18:49,770 autoreload Watching for file changes with StatReloader
+INFO 2025-03-13 13:21:21,414 basehttp "GET / HTTP/1.1" 200 4238
+INFO 2025-03-13 13:21:21,785 basehttp "GET /media/background.webp HTTP/1.1" 304 0
+WARNING 2025-03-13 13:21:21,882 log Not Found: /favicon.ico
+WARNING 2025-03-13 13:21:21,883 basehttp "GET /favicon.ico HTTP/1.1" 404 5553
+INFO 2025-03-13 13:21:29,285 basehttp "GET /login/ HTTP/1.1" 200 3974
+INFO 2025-03-13 13:21:40,212 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-03-13 13:21:43,464 basehttp "GET /dashboard/ HTTP/1.1" 200 5353
+INFO 2025-03-13 13:21:43,622 basehttp "GET /media/dp.jpeg HTTP/1.1" 304 0
+INFO 2025-03-13 13:21:53,415 basehttp "GET /profile/ HTTP/1.1" 200 8951
+INFO 2025-03-13 13:23:37,496 basehttp "GET /dashboard/ HTTP/1.1" 200 5396
+WARNING 2025-03-13 13:23:37,525 log Not Found: /media/profile_pics/IMG-20220318-WA0013.jpg
+WARNING 2025-03-13 13:23:37,527 basehttp "GET /media/profile_pics/IMG-20220318-WA0013.jpg HTTP/1.1" 404 5878
+INFO 2025-03-13 13:23:50,756 basehttp "GET /dashboard/ HTTP/1.1" 200 5396
+WARNING 2025-03-13 13:23:50,774 log Not Found: /media/profile_pics/IMG-20220318-WA0013.jpg
+WARNING 2025-03-13 13:23:50,777 basehttp "GET /media/profile_pics/IMG-20220318-WA0013.jpg HTTP/1.1" 404 5878
+INFO 2025-03-13 13:28:23,842 basehttp "GET /upload/ HTTP/1.1" 200 5419
+WARNING 2025-03-13 13:28:23,877 log Not Found: /media/profile_pics/IMG-20220318-WA0013.jpg
+WARNING 2025-03-13 13:28:23,880 basehttp "GET /media/profile_pics/IMG-20220318-WA0013.jpg HTTP/1.1" 404 5878
+WARNING 2025-03-13 13:28:23,940 basehttp "GET /static/images/voice_ledger_bg.jpg HTTP/1.1" 404 1892
+INFO 2025-03-13 13:28:39,342 audio_record Audio upload request received.
+INFO 2025-03-13 13:28:39,980 audio_record AudioRecord 662192efbd484bb48a7ccdf4f992b07b saved successfully.
+INFO 2025-03-13 13:28:40,400 audio_record Audio file duration: 4.282167 seconds
+INFO 2025-03-13 13:28:40,401 audio_record AudioRecord 662192efbd484bb48a7ccdf4f992b07b processed successfully.
+INFO 2025-03-13 13:28:40,478 basehttp "POST /upload_audio/ HTTP/1.1" 200 622
+INFO 2025-03-13 13:28:45,023 basehttp "GET /dashboard/ HTTP/1.1" 200 5396
+WARNING 2025-03-13 13:28:45,045 log Not Found: /media/profile_pics/IMG-20220318-WA0013.jpg
+WARNING 2025-03-13 13:28:45,047 basehttp "GET /media/profile_pics/IMG-20220318-WA0013.jpg HTTP/1.1" 404 5878
+INFO 2025-03-13 13:28:52,697 basehttp "GET /my-audios/ HTTP/1.1" 200 6709
+WARNING 2025-03-13 13:28:52,723 log Not Found: /media/profile_pics/IMG-20220318-WA0013.jpg
+WARNING 2025-03-13 13:28:52,725 basehttp "GET /media/profile_pics/IMG-20220318-WA0013.jpg HTTP/1.1" 404 5878
+INFO 2025-03-13 13:29:13,493 whisper_transcription Successfully processed audio record ID: 662192ef-bd48-4bb4-8a7c-cdf4f992b07b
+INFO 2025-03-13 13:29:13,497 open_ai Initializing OpenAI request logs for user: admin
+INFO 2025-03-13 13:29:14,442 open_ai OpenAI request logs initialized successfully.
+INFO 2025-03-13 13:29:14,442 open_ai Fetching pending OpenAI request logs...
+INFO 2025-03-13 13:29:15,007 open_ai Processing request log ID: f64387d6-50c3-4eef-8937-d35043000b12
+INFO 2025-03-13 13:29:17,938 open_ai Extracted Data for request log ID f64387d6-50c3-4eef-8937-d35043000b12: {'selling_price': 200, 'product_name': 'Apple cell', 'cost_price': 100}
+INFO 2025-03-13 13:29:20,520 open_ai Transaction created/updated for request log ID f64387d6-50c3-4eef-8937-d35043000b12
+INFO 2025-03-13 13:29:20,523 basehttp "POST /process-audio/662192ef-bd48-4bb4-8a7c-cdf4f992b07b/ HTTP/1.1" 302 0
+INFO 2025-03-13 13:29:24,674 basehttp "GET /my-audios/ HTTP/1.1" 200 6428
+WARNING 2025-03-13 13:29:24,699 log Not Found: /media/profile_pics/IMG-20220318-WA0013.jpg
+WARNING 2025-03-13 13:29:24,701 basehttp "GET /media/profile_pics/IMG-20220318-WA0013.jpg HTTP/1.1" 404 5878
+INFO 2025-03-13 13:35:22,057 autoreload C:\Coding File\bhai\project\app\utils\whisper_util.py changed, reloading.
+INFO 2025-03-13 13:35:24,279 autoreload Watching for file changes with StatReloader
