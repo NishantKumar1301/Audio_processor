@@ -2741,3 +2741,39 @@ WARNING 2025-03-13 13:49:11,728 log Not Found: /media/profile_pics/IMG-20220318-
 WARNING 2025-03-13 13:49:11,730 basehttp "GET /media/profile_pics/IMG-20220318-WA0013.jpg HTTP/1.1" 404 5878
 INFO 2025-03-13 13:50:00,557 autoreload C:\Coding File\bhai\project\project\settings.py changed, reloading.
 INFO 2025-03-13 13:50:02,563 autoreload Watching for file changes with StatReloader
+INFO 2025-03-13 13:51:00,157 basehttp "GET /audio-details/39d20039-82ad-4e49-9cfd-c286913c1101/ HTTP/1.1" 302 0
+WARNING 2025-03-13 13:51:00,169 log Not Found: /accounts/login/
+WARNING 2025-03-13 13:51:00,170 basehttp "GET /accounts/login/?next=/audio-details/39d20039-82ad-4e49-9cfd-c286913c1101/ HTTP/1.1" 404 5623
+INFO 2025-03-13 13:51:07,226 basehttp "GET / HTTP/1.1" 200 4238
+INFO 2025-03-13 13:51:09,276 basehttp "GET /login/ HTTP/1.1" 200 3974
+INFO 2025-03-13 13:51:14,992 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-03-13 13:51:15,176 basehttp "GET /dashboard/ HTTP/1.1" 200 5396
+INFO 2025-03-13 13:51:15,204 basehttp "GET /media/profile_pics/IMG-20220318-WA0014.jpg HTTP/1.1" 304 0
+INFO 2025-03-13 13:51:21,960 basehttp "GET /transactions/ HTTP/1.1" 200 10563
+INFO 2025-03-13 13:51:25,254 basehttp "GET /transactions/?page=3 HTTP/1.1" 200 9372
+INFO 2025-03-13 13:51:27,422 basehttp "GET /transactions/?page=1 HTTP/1.1" 200 10563
+INFO 2025-03-13 13:51:30,853 basehttp "GET /transactions/?page=3 HTTP/1.1" 200 9372
+INFO 2025-03-13 13:52:06,875 basehttp "GET /upload/ HTTP/1.1" 200 5419
+WARNING 2025-03-13 13:52:07,004 basehttp "GET /static/images/voice_ledger_bg.jpg HTTP/1.1" 404 1892
+INFO 2025-03-13 13:52:13,942 audio_record Audio upload request received.
+INFO 2025-03-13 13:52:13,956 audio_record AudioRecord 168866f01221426e9190a10512c179ea saved successfully.
+INFO 2025-03-13 13:52:14,053 audio_record Audio file duration: 4.282167 seconds
+INFO 2025-03-13 13:52:14,053 audio_record AudioRecord 168866f01221426e9190a10512c179ea processed successfully.
+INFO 2025-03-13 13:52:14,057 basehttp "POST /upload_audio/ HTTP/1.1" 200 622
+INFO 2025-03-13 13:52:17,132 basehttp "GET /dashboard/ HTTP/1.1" 200 5396
+INFO 2025-03-13 13:52:23,891 basehttp "GET /my-audios/ HTTP/1.1" 200 9973
+INFO 2025-03-13 13:52:35,992 whisper_transcription Successfully processed audio record ID: 9658c0e4-6341-4d43-a1be-d2276342753c
+INFO 2025-03-13 13:52:43,903 whisper_transcription Successfully processed audio record ID: 168866f0-1221-426e-9190-a10512c179ea
+INFO 2025-03-13 13:52:43,904 open_ai Initializing OpenAI request logs for user: admin
+INFO 2025-03-13 13:52:43,925 open_ai OpenAI request logs initialized successfully.
+INFO 2025-03-13 13:52:43,925 open_ai Fetching pending OpenAI request logs...
+INFO 2025-03-13 13:52:43,930 open_ai Processing request log ID: 31fefa5d-006b-4a49-bcd4-206784a17adf
+INFO 2025-03-13 13:52:45,932 open_ai Extracted Data for request log ID 31fefa5d-006b-4a49-bcd4-206784a17adf: {'selling_price': 200, 'product_name': 'Apple cell', 'cost_price': 100}
+INFO 2025-03-13 13:52:45,951 open_ai Transaction created/updated for request log ID 31fefa5d-006b-4a49-bcd4-206784a17adf
+INFO 2025-03-13 13:52:45,951 open_ai Processing request log ID: 9b4c7e07-0c49-436f-bb6b-f0df0ccec1b4
+INFO 2025-03-13 13:52:47,291 open_ai Extracted Data for request log ID 9b4c7e07-0c49-436f-bb6b-f0df0ccec1b4: {'selling_price': 200, 'product_name': 'Apple cell', 'cost_price': 100}
+INFO 2025-03-13 13:52:47,301 open_ai Transaction created/updated for request log ID 9b4c7e07-0c49-436f-bb6b-f0df0ccec1b4
+INFO 2025-03-13 13:52:47,303 basehttp "POST /process-audio/168866f0-1221-426e-9190-a10512c179ea/ HTTP/1.1" 302 0
+INFO 2025-03-13 13:52:47,426 basehttp "GET /my-audios/ HTTP/1.1" 200 9411
+INFO 2025-03-13 13:52:51,769 basehttp "GET /audio-details/168866f0-1221-426e-9190-a10512c179ea/ HTTP/1.1" 200 5891
+INFO 2025-03-13 13:52:58,023 basehttp "GET /dashboard/ HTTP/1.1" 200 5396
